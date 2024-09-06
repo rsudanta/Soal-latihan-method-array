@@ -10,7 +10,7 @@ const makeAllCaps = (elements) => {
             resolve(result)
         }
         catch (err) {
-            reject(err)
+            reject(err.message)
         }
     })
 }
@@ -21,7 +21,7 @@ const sortWords = (elements) => {
             const result = elements.sort()
             resolve(result)
         } catch (err) {
-            reject(err)
+            reject(err.message)
         }
     })
 }
