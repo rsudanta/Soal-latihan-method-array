@@ -2,6 +2,9 @@ const makeAllCaps = (elements) => {
     return new Promise((resolve, reject) => {
         try {
             const result = elements.map(element => {
+                if (typeof element !== 'string') {
+                    reject("Element must be a string!")
+                }
                 return element.toUpperCase()
             });
             resolve(result)
@@ -23,12 +26,15 @@ const sortWords = (elements) => {
     })
 }
 
-fruits = ["apel", "pisang", "melon", "jeruk"]
+const arrayOfWords = ["cucumber", "tomatos", "avocado"]
+const complicatedArray = ["cucumber", 44, true]
 
-makeAllCaps(fruits)
-    .then((data) => {
-        sortWords(data)
-            .then(result => console.log(result))
-            .catch(err => console.log(err))
-    })
+makeAllCaps(arrayOfWords)
+    .then(sortWords)
+    .then(result => console.log(result))
+    .catch(err => console.log(err))
+
+makeAllCaps(complicatedArray)
+    .then(sortWords)
+    .then(result => console.log(result))
     .catch(err => console.log(err))
